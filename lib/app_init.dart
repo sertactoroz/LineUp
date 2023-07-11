@@ -1,5 +1,4 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
-import 'package:flutter/animation.dart';
 import 'package:flutter/material.dart';
 import 'package:lineup/view/pages/login_page.dart';
 import 'package:page_transition/page_transition.dart';
@@ -18,7 +17,7 @@ class _AppInitState extends State<AppInit> {
       body: Stack(
         children: [
           AnimatedSplashScreen.withScreenFunction(
-            splash: "lib/assets/lineup_logo.png",
+            splash: "/logo.png",
             backgroundColor: Colors.white,
             screenFunction: () async {
               // await player.dispose();
