@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lineup/view/pages/init/app_init.dart';
+import 'package:lineup/view/pages/Init/app_init.dart';
 
 void main() {
   runApp(const MaterialApp(
