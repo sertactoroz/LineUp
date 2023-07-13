@@ -1,5 +1,8 @@
 import 'package:easy_splash_screen/easy_splash_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:lineup/colors/colors.dart';
+
+import '../LoginPage/login_page_view.dart';
 
 class AppInit extends StatefulWidget {
   const AppInit({super.key});
@@ -14,9 +17,10 @@ class _AppInitState extends State<AppInit> {
     return EasySplashScreen(
       logo: Image.asset("assets/images/logo.png"),
       logoWidth: 100,
-      backgroundColor: Colors.white,
+      backgroundColor: bgColor,
       showLoader: false,
-      // navigator: LoginPage(),
+      durationInSeconds: 4,
+      navigator: const LoginPageView(),
     );
   }
 }
