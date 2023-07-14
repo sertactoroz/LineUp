@@ -34,16 +34,13 @@ class _LoginPageViewState extends State<LoginPageView> {
           final double screenWidth = MediaQuery.of(context).size.width;
           final double screenHeight = MediaQuery.of(context).size.height;
 
-          debugPrint("screenWidth: $screenWidth");
-          debugPrint("screenHeight: $screenHeight");
-
           return Form(
             key: formKey,
             child: SizedBox(
               height: isPortrait ? screenHeight : null,
               child: Center(
                 child: FractionallySizedBox(
-                  widthFactor: isPortrait ? 0.9 : 0.75,
+                  widthFactor: isPortrait ? 0.9 : 0.8,
                   child: isPortrait
                       ? const LoginPageViewVertical()
                       : const LoginPageViewHorizontal(),
