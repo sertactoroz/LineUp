@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:lineup/core/components/widgets/text_form_widget.dart';
-import 'package:lineup/view/pages/RegisterPage/register_page_view.dart';
 
 import '../../../colors/colors.dart';
+import '../LoginPage/login_page_view.dart';
 
-class LoginPageViewVertical extends StatefulWidget {
-  const LoginPageViewVertical({super.key});
+class RegisterPageViewVertical extends StatefulWidget {
+  const RegisterPageViewVertical({super.key});
 
   @override
-  State<LoginPageViewVertical> createState() => _LoginPageViewVerticalState();
+  State<RegisterPageViewVertical> createState() =>
+      _RegisterPageViewVerticalState();
 }
 
-class _LoginPageViewVerticalState extends State<LoginPageViewVertical> {
+class _RegisterPageViewVerticalState extends State<RegisterPageViewVertical> {
   TextEditingController emailController = TextEditingController();
-
+  TextEditingController userNameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
   bool isHided = false;
@@ -45,6 +46,12 @@ class _LoginPageViewVerticalState extends State<LoginPageViewVertical> {
         ),
         const SizedBox(height: 10),
         TextFormWidget(
+          controller: userNameController,
+          hinText: "username",
+          labelText: "username",
+        ),
+        const SizedBox(height: 10),
+        TextFormWidget(
           iconVisible: true,
           isHided: isHided,
           controller: passwordController,
@@ -67,7 +74,7 @@ class _LoginPageViewVerticalState extends State<LoginPageViewVertical> {
             ),
             onPressed: () {},
             child: Text(
-              "Login",
+              "Register",
               style: TextStyle(fontSize: fontSize),
             ),
           ),
@@ -79,15 +86,16 @@ class _LoginPageViewVerticalState extends State<LoginPageViewVertical> {
           thickness: 3,
         ),
         TextButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const RegisterPageView(),
-                ),
-              );
-            },
-            child: const Text('Register'))
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const LoginPageView(),
+              ),
+            );
+          },
+          child: const Text('Login'),
+        )
       ],
     );
   }
