@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lineup/core/components/widgets/text_form_widget.dart';
 
 import '../../../colors/colors.dart';
 
@@ -19,7 +20,9 @@ class _LoginPageViewHorizontalState extends State<LoginPageViewHorizontal> {
   bool isHided = false;
 
   setIsHided() {
-    isHided = !isHided;
+    setState(() {
+      isHided = !isHided;
+    });
   }
 
   @override
@@ -27,20 +30,25 @@ class _LoginPageViewHorizontalState extends State<LoginPageViewHorizontal> {
     final double screenWidth = MediaQuery.of(context).size.width;
     final double screenHeight = MediaQuery.of(context).size.height;
     final double fontSize = screenWidth * 0.04;
-    return SingleChildScrollView(
+    return Container(
+      padding: const EdgeInsets.all(15),
+      alignment: Alignment.topCenter,
       child: Column(
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SizedBox(
-                width: screenWidth / 3,
-                height: screenHeight / 3,
-                child: Image.asset(
-                  "assets/images/logo.png",
+          Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                  width: screenWidth / 5,
+                  height: screenHeight / 5,
+                  child: Image.asset(
+                    "assets/images/logo.png",
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -51,42 +59,22 @@ class _LoginPageViewHorizontalState extends State<LoginPageViewHorizontal> {
                   children: [
                     Padding(
                       padding: const EdgeInsets.only(bottom: 10),
-                      child: TextFormField(
+                      child: TextFormWidget(
                         controller: emailController,
-                        decoration: const InputDecoration(
-                          hintText: "example@gmail.com",
-                          labelText: "e-mail",
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(15),
-                            ),
-                          ),
-                        ),
+                        hinText: "example@example.com",
+                        labelText: "e-mail",
                       ),
                     ),
-                    TextFormField(
-                      obscureText: isHided,
+                    TextFormWidget(
+                      iconVisible: true,
+                      isHided: isHided,
                       controller: passwordController,
-                      decoration: InputDecoration(
-                        suffixIcon: IconButton(
-                          onPressed: () {
-                            setState(() {
-                              setIsHided();
-                            });
-                          },
-                          icon: isHided
-                              ? const Icon(Icons.remove_red_eye)
-                              : const Icon(Icons.remove_red_eye_outlined),
-                        ),
-                        hintText: "* * * * * *",
-                        labelText: "password",
-                        border: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(15),
-                          ),
-                        ),
-                      ),
-                    ),
+                      iconButton: () {
+                        setIsHided();
+                      },
+                      hinText: "******",
+                      labelText: "password",
+                    )
                   ],
                 ),
               ),
