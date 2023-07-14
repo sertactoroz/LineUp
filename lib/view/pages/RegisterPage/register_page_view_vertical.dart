@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:lineup/core/components/widgets/text_form_widget.dart';
 
@@ -72,7 +73,9 @@ class _RegisterPageViewVerticalState extends State<RegisterPageViewVertical> {
                 borderRadius: BorderRadius.circular(15),
               ),
             ),
-            onPressed: () {},
+            onPressed: () {
+              register();
+            },
             child: Text(
               "Register",
               style: TextStyle(fontSize: fontSize),
@@ -98,5 +101,23 @@ class _RegisterPageViewVerticalState extends State<RegisterPageViewVertical> {
         )
       ],
     );
+  }
+
+  register() async {
+    try {
+      final credential =
+          await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: emailController.text,
+        password: passwordController.text,
+      );
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'weak-password') {
+        print('The password provided is too weak.');
+      } else if (e.code == 'email-already-in-use') {
+        print('The account already exists for that email.');
+      }
+    } catch (e) {
+      print(e);
+    }
   }
 }
