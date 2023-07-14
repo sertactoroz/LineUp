@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lineup/core/components/widgets/text_form_widget.dart';
 
 import '../../../colors/colors.dart';
 
@@ -36,41 +37,21 @@ class _LoginPageViewVerticalState extends State<LoginPageViewVertical> {
           ),
         ),
         const SizedBox(height: 20),
-        TextFormField(
+        TextFormWidget(
           controller: emailController,
-          decoration: const InputDecoration(
-            hintText: "example@gmail.com",
-            labelText: "e-mail",
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.all(
-                Radius.circular(15),
-              ),
-            ),
-          ),
+          hinText: "example@example.com",
+          labelText: "e-mail",
         ),
         const SizedBox(height: 10),
-        TextFormField(
-          obscureText: isHided,
+        TextFormWidget(
+          iconVisible: true,
+          isHided: isHided,
           controller: passwordController,
-          decoration: InputDecoration(
-            suffixIcon: IconButton(
-              onPressed: () {
-                setState(() {
-                  setIsHided();
-                });
-              },
-              icon: isHided
-                  ? const Icon(Icons.remove_red_eye)
-                  : const Icon(Icons.remove_red_eye_outlined),
-            ),
-            hintText: "* * * * * *",
-            labelText: "password",
-            border: const OutlineInputBorder(
-              borderRadius: BorderRadius.all(
-                Radius.circular(15),
-              ),
-            ),
-          ),
+          iconButton: () {
+            setIsHided();
+          },
+          hinText: "*****",
+          labelText: "password",
         ),
         const SizedBox(height: 10),
         SizedBox(
