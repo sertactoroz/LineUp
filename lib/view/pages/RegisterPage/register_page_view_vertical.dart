@@ -6,7 +6,17 @@ import '../../../colors/colors.dart';
 import '../LoginPage/login_page_view.dart';
 
 class RegisterPageViewVertical extends StatefulWidget {
-  const RegisterPageViewVertical({super.key});
+  TextEditingController emailController = TextEditingController();
+  TextEditingController userNameController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  Function registerFunction;
+  RegisterPageViewVertical({
+    super.key,
+    required this.emailController,
+    required this.passwordController,
+    required this.userNameController,
+    required this.registerFunction,
+  });
 
   @override
   State<RegisterPageViewVertical> createState() =>
@@ -14,10 +24,6 @@ class RegisterPageViewVertical extends StatefulWidget {
 }
 
 class _RegisterPageViewVerticalState extends State<RegisterPageViewVertical> {
-  TextEditingController emailController = TextEditingController();
-  TextEditingController userNameController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
-
   bool isHided = false;
 
   setIsHided() {
@@ -41,13 +47,13 @@ class _RegisterPageViewVerticalState extends State<RegisterPageViewVertical> {
         ),
         const SizedBox(height: 20),
         TextFormWidget(
-          controller: emailController,
+          controller: widget.emailController,
           hinText: "example@example.com",
           labelText: "e-mail",
         ),
         const SizedBox(height: 10),
         TextFormWidget(
-          controller: userNameController,
+          controller: widget.userNameController,
           hinText: "username",
           labelText: "username",
         ),
@@ -55,7 +61,7 @@ class _RegisterPageViewVerticalState extends State<RegisterPageViewVertical> {
         TextFormWidget(
           iconVisible: true,
           isHided: isHided,
-          controller: passwordController,
+          controller: widget.passwordController,
           iconButton: () {
             setIsHided();
           },
@@ -74,7 +80,7 @@ class _RegisterPageViewVerticalState extends State<RegisterPageViewVertical> {
               ),
             ),
             onPressed: () {
-              register();
+              widget.registerFunction();
             },
             child: Text(
               "Register",
@@ -101,23 +107,5 @@ class _RegisterPageViewVerticalState extends State<RegisterPageViewVertical> {
         )
       ],
     );
-  }
-
-  register() async {
-    try {
-      final credential =
-          await FirebaseAuth.instance.createUserWithEmailAndPassword(
-        email: emailController.text,
-        password: passwordController.text,
-      );
-    } on FirebaseAuthException catch (e) {
-      if (e.code == 'weak-password') {
-        print('The password provided is too weak.');
-      } else if (e.code == 'email-already-in-use') {
-        print('The account already exists for that email.');
-      }
-    } catch (e) {
-      print(e);
-    }
   }
 }

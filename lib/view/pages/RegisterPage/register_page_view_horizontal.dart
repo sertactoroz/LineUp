@@ -5,7 +5,17 @@ import '../../../colors/colors.dart';
 import '../LoginPage/login_page_view.dart';
 
 class RegisterPageViewHorizontal extends StatefulWidget {
-  const RegisterPageViewHorizontal({super.key});
+  TextEditingController emailController = TextEditingController();
+  TextEditingController userNameController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  Function registerFunction;
+  RegisterPageViewHorizontal({
+    super.key,
+    required this.emailController,
+    required this.userNameController,
+    required this.passwordController,
+    required this.registerFunction,
+  });
 
   @override
   State<RegisterPageViewHorizontal> createState() =>
@@ -16,9 +26,6 @@ class _RegisterPageViewHorizontalState
     extends State<RegisterPageViewHorizontal> {
   final formKey = GlobalKey<FormState>();
 
-  TextEditingController emailController = TextEditingController();
-  TextEditingController userNameController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
   bool isHided = false;
 
   setIsHided() {
@@ -60,7 +67,7 @@ class _RegisterPageViewHorizontalState
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     TextFormWidget(
-                      controller: emailController,
+                      controller: widget.emailController,
                       hinText: "example@example.com",
                       labelText: "e-mail",
                     ),
@@ -68,7 +75,7 @@ class _RegisterPageViewHorizontalState
                       height: 10,
                     ),
                     TextFormWidget(
-                      controller: userNameController,
+                      controller: widget.userNameController,
                       hinText: "username",
                       labelText: "username",
                     ),
@@ -78,7 +85,7 @@ class _RegisterPageViewHorizontalState
                     TextFormWidget(
                       iconVisible: true,
                       isHided: isHided,
-                      controller: passwordController,
+                      controller: widget.passwordController,
                       iconButton: () {
                         setIsHided();
                       },
@@ -105,7 +112,9 @@ class _RegisterPageViewHorizontalState
                         borderRadius: BorderRadius.circular(15),
                       ),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      widget.registerFunction();
+                    },
                     child: Text(
                       "Register",
                       style: TextStyle(fontSize: fontSize),
