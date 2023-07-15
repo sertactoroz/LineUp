@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "214790324249",
+    "project_id": "lineup-e2dda",
+    "storage_bucket": "lineup-e2dda.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:214790324249:android:cfcdb2fda0b25fc2766a88",
+        "android_client_info": {
+          "package_name": "com.example.lineup"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "214790324249-2gp6711dedvta7voc98mqhedr71m5ktj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDVZHXvA-6jwFuS2UJc_50H73K-UaRAWao"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "214790324249-2gp6711dedvta7voc98mqhedr71m5ktj.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "214790324249-4gaqo6p4nrl652ikivrffekq5v9vik8t.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.lineup"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
