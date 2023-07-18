@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:lineup/core/components/widgets/text_form_widget.dart';
 
 import '../../../colors/colors.dart';
+import '../RegisterPage/register_page_view.dart';
 
 class LoginPageViewHorizontal extends StatefulWidget {
   const LoginPageViewHorizontal({super.key});
@@ -100,7 +101,18 @@ class _LoginPageViewHorizontalState extends State<LoginPageViewHorizontal> {
                       "Login",
                       style: TextStyle(fontSize: fontSize),
                     ),
-                  )
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const RegisterPageView(),
+                        ),
+                      );
+                    },
+                    child: const Text('Register'),
+                  ),
                 ],
               ),
             ],

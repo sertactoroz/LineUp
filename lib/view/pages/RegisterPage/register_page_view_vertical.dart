@@ -98,13 +98,29 @@ class _RegisterPageViewVerticalState extends State<RegisterPageViewVertical> {
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(
-                builder: (context) => const LoginPageView(),
+              PageRouteBuilder(
+                pageBuilder: (context, animation, secondaryAnimation) =>
+                    const LoginPageView(),
+                transitionsBuilder:
+                    (context, animation, secondaryAnimation, child) {
+                  // Left-to-right page transition
+                  const begin =
+                      Offset(-1.0, 0.0); // Start position of the new page
+                  const end = Offset.zero; // End position of the new page
+                  const curve = Curves.ease; // Animation curve
+                  var tween = Tween(begin: begin, end: end)
+                      .chain(CurveTween(curve: curve));
+
+                  return SlideTransition(
+                    position: animation.drive(tween),
+                    child: child,
+                  );
+                },
               ),
             );
           },
           child: const Text('Login'),
-        )
+        ),
       ],
     );
   }

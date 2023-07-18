@@ -79,15 +79,16 @@ class _LoginPageViewVerticalState extends State<LoginPageViewVertical> {
           thickness: 3,
         ),
         TextButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const RegisterPageView(),
-                ),
-              );
-            },
-            child: const Text('Register'))
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const RegisterPageView(),
+              ),
+            );
+          },
+          child: const Text('Register'),
+        ),
       ],
     );
   }
