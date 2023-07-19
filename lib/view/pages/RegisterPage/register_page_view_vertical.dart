@@ -80,11 +80,7 @@ class _RegisterPageViewVerticalState extends State<RegisterPageViewVertical> {
               ),
             ),
             onPressed: () {
-<<<<<<< HEAD
-              register();
-=======
               widget.registerFunction();
->>>>>>> register_page_service
             },
             child: Text(
               "Register",
@@ -117,8 +113,8 @@ class _RegisterPageViewVerticalState extends State<RegisterPageViewVertical> {
     try {
       final credential =
           await FirebaseAuth.instance.createUserWithEmailAndPassword(
-        email: emailController.text,
-        password: passwordController.text,
+        email: widget.emailController.text,
+        password: widget.passwordController.text,
       );
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
